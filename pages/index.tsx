@@ -1,10 +1,6 @@
 import type { NextPage } from 'next'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-// import Head from 'next/head'
-// import Image from 'next/image'
-
-const baseURL = 'http://localhost:3001/api/phonewords/'
 
 const Home: NextPage = () => {
   const [display, setDisplay] = useState('')
@@ -24,8 +20,10 @@ const Home: NextPage = () => {
   }
 
   useEffect(() => {
+    const baseURL = window.location.href
+
     if (display.length) {
-      axios.get(`${baseURL}${display}`)
+      axios.get(`${baseURL}api/phonewords/${display}`)
         .then(response => setResult(response.data))
     } else {
       setResult([''])
