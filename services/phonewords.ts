@@ -1,3 +1,5 @@
+import englishWords from 'an-array-of-english-words'
+
 const map: { [key: string]: string } =
 {
   '0': '',
@@ -33,5 +35,6 @@ export const phonewords = (digits: string) => {
     walk('', 0)
   }
 
-  return result
+  return result.filter(word => englishWords.includes(word))
+  
 }
