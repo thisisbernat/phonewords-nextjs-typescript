@@ -14,8 +14,8 @@ const Home: NextPage = () => {
   const [digits, setDigits] = useState('')
   const [result, setResult] = useState([''])
 
-  const updateDisplay = (value: string) => {
-    setDigits(digits + value)
+  const updateDisplay = (newDigit: string) => {
+    setDigits(digits + newDigit)
   }
 
   const clearData = () => {
@@ -33,15 +33,15 @@ const Home: NextPage = () => {
     }
   }
 
-  const updateScreen = (element: string) => {
-    setMessage(message + ' ' + element)
+  const updateScreen = (newWord: string) => {
+    setMessage(message + ' ' + newWord)
     setDigits('')
   }
 
   useEffect(() => {
     if (digits.length) {
       getWords(digits)
-        .then(response => setResult(response.data))
+        .then(res => setResult(res.data))
     } else {
       setResult([''])
     }
@@ -50,7 +50,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Phonewords</title>
+        <title>T9 Emulator 🥝</title>
         <meta name="description" content="Phonewords" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
