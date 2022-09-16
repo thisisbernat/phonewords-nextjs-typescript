@@ -14,7 +14,7 @@ const map: { [key: string]: string } =
   '9': 'wxyz'
 }
 
-export const phonewords = (digits: string) => {
+export const t9 = (digits: string) => {
   if (digits.length === 0) return []
 
   const result: string[] = []
