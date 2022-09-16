@@ -57,7 +57,7 @@ const Home: NextPage = () => {
           {result.map((element, i) => element && <div key={`pred-${i}`} onClick={() => writeToScreen(element)} style={{cursor:"pointer"}}><BadgePrimitive background="#007F6D" foregroundColor="#fff">{element}</BadgePrimitive></div>)}
         </span>
       </div>
-      <div className={styles.display}>{display}</div>
+      <div className={styles.display}>{display}<span className={styles.blink}>_</span></div>
       <Grid
         rowGap="1rem"
         columnGap="1rem"

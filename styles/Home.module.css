@@ -37,3 +37,21 @@
   display: flex;
   gap: 5px;
 }
+
+.blink {
+  animation: 1s linear infinite blink-effect;
+}
+
+@keyframes blink-effect {
+  0% {
+    visibility: hidden;
+  }
+
+  50% {
+    visibility: hidden;
+  }
+
+  100% {
+    visibility: visible;
+  }
+}
