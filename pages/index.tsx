@@ -52,7 +52,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.screen}>
-        {message? message : 'Waiting...'}
+        {message? message : <div> </div>}
         <span className={styles.predicted}>
           {result.map((element, i) => element && <div key={`pred-${i}`} onClick={() => writeToScreen(element)} style={{cursor:"pointer"}}><BadgePrimitive background="#007F6D" foregroundColor="#fff">{element}</BadgePrimitive></div>)}
         </span>
