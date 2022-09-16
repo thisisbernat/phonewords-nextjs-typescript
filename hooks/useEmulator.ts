@@ -36,10 +36,10 @@ export const useEmulator = () => {
       setIsLoading(true)
       getWords(digits)
         .then(res => setWords(res.data))
-      setIsLoading(false)
     } else {
       setWords([''])
     }
+    setIsLoading(false)
   }, [digits])
 
   return {
