@@ -4,7 +4,7 @@ import { getWords } from '../services/api.services'
 export const useEmulator = () => {
   const [message, setMessage] = useState('')
   const [digits, setDigits] = useState('')
-  const [result, setResult] = useState([''])
+  const [words, setWords] = useState([''])
 
   const updateDisplay = (newDigit: string) => {
     setDigits(digits + newDigit)
@@ -17,7 +17,7 @@ export const useEmulator = () => {
 
   const clearData = () => {
     setDigits('')
-    setResult([''])
+    setWords([''])
     setMessage('')
   }
 
@@ -33,16 +33,16 @@ export const useEmulator = () => {
   useEffect(() => {
     if (digits.length) {
       getWords(digits)
-        .then(res => setResult(res.data))
+        .then(res => setWords(res.data))
     } else {
-      setResult([''])
+      setWords([''])
     }
   }, [digits])
 
   return {
     message,
     digits,
-    result,
+    words,
     updateDisplay,
     updateScreen,
     clearData,

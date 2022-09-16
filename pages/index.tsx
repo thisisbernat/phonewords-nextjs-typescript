@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   const {
     message,
     digits,
-    result,
+    words,
     updateDisplay,
     updateScreen,
     clearData,
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
       <div className={styles.screen}>
         {message ? message : <div> </div>}
         <span className={styles.predicted}>
-          {result.map((element, i) => element && <div key={`pred-${i}`} onClick={() => updateScreen(element)} style={{ cursor: "pointer" }}><BadgePrimitive background="#007F6D" foregroundColor="#fff">{element}</BadgePrimitive></div>)}
+          {words.map((word, i) => word && <div key={`pred-${i}`} onClick={() => updateScreen(word)} style={{ cursor: "pointer" }}><BadgePrimitive background="#007F6D" foregroundColor="#fff">{word}</BadgePrimitive></div>)}
         </span>
       </div>
       <div className={styles.digitsDisplay}>{digits}<span className={styles.blink}>_</span></div>
