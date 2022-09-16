@@ -14,11 +14,11 @@ const Home: NextPage = () => {
   const [digits, setDigits] = useState('')
   const [result, setResult] = useState([''])
 
-  const writeToDisplay = (value: string) => {
+  const updateDisplay = (value: string) => {
     setDigits(digits + value)
   }
 
-  const clearDisplay = () => {
+  const clearData = () => {
     setDigits('')
     setResult([''])
     setMessage('')
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
     }
   }
 
-  const writeToScreen = (element: string) => {
+  const updateScreen = (element: string) => {
     setMessage(message + ' ' + element)
     setDigits('')
   }
@@ -59,7 +59,7 @@ const Home: NextPage = () => {
       <div className={styles.screen}>
         {message ? message : <div> </div>}
         <span className={styles.predicted}>
-          {result.map((element, i) => element && <div key={`pred-${i}`} onClick={() => writeToScreen(element)} style={{ cursor: "pointer" }}><BadgePrimitive background="#007F6D" foregroundColor="#fff">{element}</BadgePrimitive></div>)}
+          {result.map((element, i) => element && <div key={`pred-${i}`} onClick={() => updateScreen(element)} style={{ cursor: "pointer" }}><BadgePrimitive background="#007F6D" foregroundColor="#fff">{element}</BadgePrimitive></div>)}
         </span>
       </div>
       <div className={styles.display}>{digits}<span className={styles.blink}>_</span></div>
@@ -69,15 +69,15 @@ const Home: NextPage = () => {
         columns="repeat(3, 1fr)"
       >
         <Button width={"4.5rem"} disabled={true}>1<br /><Text as="span" type="white" italic={true}>_</Text></Button>
-        <Button width={"4.5rem"} onClick={() => writeToDisplay('2')}>2<br /><Text as="span" type="white" italic={true}>abc</Text></Button>
-        <Button width={"4.5rem"} onClick={() => writeToDisplay('3')}>3<br /><Text as="span" type="white" italic={true}>def</Text></Button>
-        <Button width={"4.5rem"} onClick={() => writeToDisplay('4')}>4<br /><Text as="span" type="white" italic={true}>ghi</Text></Button>
-        <Button width={"4.5rem"} onClick={() => writeToDisplay('5')}>5<br /><Text as="span" type="white" italic={true}>jkl</Text></Button>
-        <Button width={"4.5rem"} onClick={() => writeToDisplay('6')}>6<br /><Text as="span" type="white" italic={true}>mno</Text></Button>
-        <Button width={"4.5rem"} onClick={() => writeToDisplay('7')}>7<br /><Text as="span" type="white" italic={true}>pqrs</Text></Button>
-        <Button width={"4.5rem"} onClick={() => writeToDisplay('8')}>8<br /><Text as="span" type="white" italic={true}>tuv</Text></Button>
-        <Button width={"4.5rem"} onClick={() => writeToDisplay('9')}>9<br /><Text as="span" type="white" italic={true}>wxyz</Text></Button>
-        <Button width={"4.5rem"} onClick={clearDisplay}>Clear</Button>
+        <Button width={"4.5rem"} onClick={() => updateDisplay('2')}>2<br /><Text as="span" type="white" italic={true}>abc</Text></Button>
+        <Button width={"4.5rem"} onClick={() => updateDisplay('3')}>3<br /><Text as="span" type="white" italic={true}>def</Text></Button>
+        <Button width={"4.5rem"} onClick={() => updateDisplay('4')}>4<br /><Text as="span" type="white" italic={true}>ghi</Text></Button>
+        <Button width={"4.5rem"} onClick={() => updateDisplay('5')}>5<br /><Text as="span" type="white" italic={true}>jkl</Text></Button>
+        <Button width={"4.5rem"} onClick={() => updateDisplay('6')}>6<br /><Text as="span" type="white" italic={true}>mno</Text></Button>
+        <Button width={"4.5rem"} onClick={() => updateDisplay('7')}>7<br /><Text as="span" type="white" italic={true}>pqrs</Text></Button>
+        <Button width={"4.5rem"} onClick={() => updateDisplay('8')}>8<br /><Text as="span" type="white" italic={true}>tuv</Text></Button>
+        <Button width={"4.5rem"} onClick={() => updateDisplay('9')}>9<br /><Text as="span" type="white" italic={true}>wxyz</Text></Button>
+        <Button width={"4.5rem"} onClick={clearData}>Clear</Button>
         <Button width={"4.5rem"} disabled={true}>0</Button>
         <Button width={"4.5rem"} onClick={backspace}><ChevronLeft /></Button>
       </Grid>
