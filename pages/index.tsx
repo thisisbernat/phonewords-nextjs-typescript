@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
 import type { NextPage } from 'next'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import {getWords} from '../services/api.services'
 import Head from 'next/head'
 import Grid from "@kiwicom/orbit-components/lib/utils/Grid"
 import Button from "@kiwicom/orbit-components/lib/Button"
@@ -39,10 +39,8 @@ const Home: NextPage = () => {
   }
 
   useEffect(() => {
-    const baseURL = window.location.href
-
     if (digits.length) {
-      axios.get(`${baseURL}api/phonewords/${digits}`)
+      getWords(digits)
         .then(response => setResult(response.data))
     } else {
       setResult([''])
