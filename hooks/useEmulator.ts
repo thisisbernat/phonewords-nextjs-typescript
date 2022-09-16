@@ -5,8 +5,10 @@ export const useEmulator = () => {
   const [message, setMessage] = useState('')
   const [digits, setDigits] = useState('')
   const [words, setWords] = useState([''])
+  const [isLoading, setIsLoading] = useState(false)
 
   const updateDisplay = (newDigit: string) => {
+    setIsLoading(true)
     setDigits(digits + newDigit)
   }
 
@@ -34,6 +36,7 @@ export const useEmulator = () => {
     if (digits.length) {
       getWords(digits)
         .then(res => setWords(res.data))
+      setIsLoading(false)
     } else {
       setWords([''])
     }
@@ -43,6 +46,7 @@ export const useEmulator = () => {
     message,
     digits,
     words,
+    isLoading,
     updateDisplay,
     updateScreen,
     clearData,

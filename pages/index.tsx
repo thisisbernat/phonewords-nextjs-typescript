@@ -7,6 +7,7 @@ import Button from "@kiwicom/orbit-components/lib/Button"
 import Text from "@kiwicom/orbit-components/lib/Text"
 import ChevronLeft from "@kiwicom/orbit-components/lib/icons/ChevronLeft"
 import BadgePrimitive from "@kiwicom/orbit-components/lib/primitives/BadgePrimitive"
+import Loading from "@kiwicom/orbit-components/lib/Loading"
 
 const Home: NextPage = () => {
 
@@ -14,6 +15,7 @@ const Home: NextPage = () => {
     message,
     digits,
     words,
+    isLoading,
     updateDisplay,
     updateScreen,
     clearData,
@@ -30,7 +32,7 @@ const Home: NextPage = () => {
       <div className={styles.screen}>
         {message ? message : <div> </div>}
         <span className={styles.predictedDisplay}>
-          {words.map((word, i) => word && <div key={`pred-${i}`} onClick={() => updateScreen(word)} style={{ cursor: "pointer" }}><BadgePrimitive background="#007F6D" foregroundColor="#fff">{word}</BadgePrimitive></div>)}
+          {isLoading ? <Loading customSize={20} /> : words.map((word, i) => word && <div key={`pred-${i}`} onClick={() => updateScreen(word)} style={{ cursor: "pointer" }}><BadgePrimitive background="#007F6D" foregroundColor="#fff">{word}</BadgePrimitive></div>)}
         </span>
       </div>
       <div className={styles.digitsDisplay}>{digits}<span className={styles.blink}>_</span></div>
