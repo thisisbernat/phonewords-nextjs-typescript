@@ -26,6 +26,11 @@ const Home: NextPage = () => {
 
   const backspace = () => {
     setDisplay(display.slice(0, -1))
+    if (display === '') {
+      const splitted = message.split(' ')
+      splitted.pop()
+      setMessage(splitted.join(' '))
+    }
   }
 
   const writeToScreen = (element: string) => {
@@ -52,9 +57,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.screen}>
-        {message? message : <div> </div>}
+        {message ? message : <div> </div>}
         <span className={styles.predicted}>
-          {result.map((element, i) => element && <div key={`pred-${i}`} onClick={() => writeToScreen(element)} style={{cursor:"pointer"}}><BadgePrimitive background="#007F6D" foregroundColor="#fff">{element}</BadgePrimitive></div>)}
+          {result.map((element, i) => element && <div key={`pred-${i}`} onClick={() => writeToScreen(element)} style={{ cursor: "pointer" }}><BadgePrimitive background="#007F6D" foregroundColor="#fff">{element}</BadgePrimitive></div>)}
         </span>
       </div>
       <div className={styles.display}>{display}<span className={styles.blink}>_</span></div>
@@ -75,7 +80,7 @@ const Home: NextPage = () => {
         <Button width={"4.5rem"} onClick={clearDisplay}>Clear</Button>
         <Button width={"4.5rem"} disabled={true}>0</Button>
         <Button width={"4.5rem"} onClick={backspace}><ChevronLeft /></Button>
-      </Grid>      
+      </Grid>
     </div>
   )
 }
