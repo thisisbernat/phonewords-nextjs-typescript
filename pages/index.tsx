@@ -11,22 +11,22 @@ import BadgePrimitive from "@kiwicom/orbit-components/lib/primitives/BadgePrimit
 
 const Home: NextPage = () => {
   const [message, setMessage] = useState('')
-  const [display, setDisplay] = useState('')
+  const [digits, setDigits] = useState('')
   const [result, setResult] = useState([''])
 
   const writeToDisplay = (value: string) => {
-    setDisplay(display + value)
+    setDigits(digits + value)
   }
 
   const clearDisplay = () => {
-    setDisplay('')
+    setDigits('')
     setResult([''])
     setMessage('')
   }
 
   const backspace = () => {
-    setDisplay(display.slice(0, -1))
-    if (display === '') {
+    setDigits(digits.slice(0, -1))
+    if (digits === '') {
       const splitted = message.split(' ')
       splitted.pop()
       setMessage(splitted.join(' '))
@@ -35,19 +35,19 @@ const Home: NextPage = () => {
 
   const writeToScreen = (element: string) => {
     setMessage(message + ' ' + element)
-    setDisplay('')
+    setDigits('')
   }
 
   useEffect(() => {
     const baseURL = window.location.href
 
-    if (display.length) {
-      axios.get(`${baseURL}api/phonewords/${display}`)
+    if (digits.length) {
+      axios.get(`${baseURL}api/phonewords/${digits}`)
         .then(response => setResult(response.data))
     } else {
       setResult([''])
     }
-  }, [display])
+  }, [digits])
 
   return (
     <div className={styles.container}>
@@ -62,7 +62,7 @@ const Home: NextPage = () => {
           {result.map((element, i) => element && <div key={`pred-${i}`} onClick={() => writeToScreen(element)} style={{ cursor: "pointer" }}><BadgePrimitive background="#007F6D" foregroundColor="#fff">{element}</BadgePrimitive></div>)}
         </span>
       </div>
-      <div className={styles.display}>{display}<span className={styles.blink}>_</span></div>
+      <div className={styles.display}>{digits}<span className={styles.blink}>_</span></div>
       <Grid
         rowGap="1rem"
         columnGap="1rem"
