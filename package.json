@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextcss/reset": "^0.2.2-beta",
     "an-array-of-english-words": "2.0.0",
     "axios": "0.27.2",
     "next": "12.3.0",
