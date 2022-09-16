@@ -1,7 +1,6 @@
 import styles from '../styles/Home.module.css'
 import type { NextPage } from 'next'
-import { useState, useEffect } from 'react'
-import {getWords} from '../services/api.services'
+import { useEmulator } from '../hooks/useEmulator'
 import Head from 'next/head'
 import Grid from "@kiwicom/orbit-components/lib/utils/Grid"
 import Button from "@kiwicom/orbit-components/lib/Button"
@@ -10,42 +9,16 @@ import ChevronLeft from "@kiwicom/orbit-components/lib/icons/ChevronLeft"
 import BadgePrimitive from "@kiwicom/orbit-components/lib/primitives/BadgePrimitive"
 
 const Home: NextPage = () => {
-  const [message, setMessage] = useState('')
-  const [digits, setDigits] = useState('')
-  const [result, setResult] = useState([''])
 
-  const updateDisplay = (newDigit: string) => {
-    setDigits(digits + newDigit)
-  }
-
-  const clearData = () => {
-    setDigits('')
-    setResult([''])
-    setMessage('')
-  }
-
-  const backspace = () => {
-    setDigits(digits.slice(0, -1))
-    if (digits === '') {
-      const splitted = message.split(' ')
-      splitted.pop()
-      setMessage(splitted.join(' '))
-    }
-  }
-
-  const updateScreen = (newWord: string) => {
-    setMessage(message + ' ' + newWord)
-    setDigits('')
-  }
-
-  useEffect(() => {
-    if (digits.length) {
-      getWords(digits)
-        .then(res => setResult(res.data))
-    } else {
-      setResult([''])
-    }
-  }, [digits])
+  const {
+    message,
+    digits,
+    result,
+    updateDisplay,
+    updateScreen,
+    clearData,
+    backspace
+  } = useEmulator()
 
   return (
     <div className={styles.container}>
