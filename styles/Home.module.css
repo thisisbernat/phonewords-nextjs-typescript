@@ -33,9 +33,11 @@
   padding: 0.5rem;
 }
 
-.predicted {
+.predictedDisplay {
   display: flex;
   gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .blink {

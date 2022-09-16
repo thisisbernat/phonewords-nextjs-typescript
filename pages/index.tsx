@@ -29,7 +29,7 @@ const Home: NextPage = () => {
       </Head>
       <div className={styles.screen}>
         {message ? message : <div> </div>}
-        <span className={styles.predicted}>
+        <span className={styles.predictedDisplay}>
           {words.map((word, i) => word && <div key={`pred-${i}`} onClick={() => updateScreen(word)} style={{ cursor: "pointer" }}><BadgePrimitive background="#007F6D" foregroundColor="#fff">{word}</BadgePrimitive></div>)}
         </span>
       </div>
