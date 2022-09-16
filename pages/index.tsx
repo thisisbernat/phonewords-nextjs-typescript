@@ -1,6 +1,13 @@
+import styles from '../styles/Home.module.css'
 import type { NextPage } from 'next'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import Head from 'next/head'
+import Grid from "@kiwicom/orbit-components/lib/utils/Grid"
+import Button from "@kiwicom/orbit-components/lib/Button"
+import Text from "@kiwicom/orbit-components/lib/Text"
+import ChevronLeft from "@kiwicom/orbit-components/lib/icons/ChevronLeft"
+import BadgePrimitive from "@kiwicom/orbit-components/lib/primitives/BadgePrimitive"
 
 const Home: NextPage = () => {
   const [display, setDisplay] = useState('')
@@ -31,26 +38,37 @@ const Home: NextPage = () => {
   }, [display])
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem", justifyContent: "center", alignItems: "center", marginTop: "10rem" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: "1rem" }}>
-        <button disabled style={{ padding: "0 1.5rem" }} ><h1>1</h1></button>
-        <button style={{ padding: "0 1.5rem" }} onClick={() => writeToDisplay('2')}><h1>2</h1></button>
-        <button style={{ padding: "0 1.5rem" }} onClick={() => writeToDisplay('3')}><h1>3</h1></button>
-        <button style={{ padding: "0 1.5rem" }} onClick={() => writeToDisplay('4')}><h1>4</h1></button>
-        <button style={{ padding: "0 1.5rem" }} onClick={() => writeToDisplay('5')}><h1>5</h1></button>
-        <button style={{ padding: "0 1.5rem" }} onClick={() => writeToDisplay('6')}><h1>6</h1></button>
-        <button style={{ padding: "0 1.5rem" }} onClick={() => writeToDisplay('7')}><h1>7</h1></button>
-        <button style={{ padding: "0 1.5rem" }} onClick={() => writeToDisplay('8')}><h1>8</h1></button>
-        <button style={{ padding: "0 1.5rem" }} onClick={() => writeToDisplay('9')}><h1>9</h1></button>
-        <button disabled style={{ padding: "0 1.5rem" }} ><h1>0</h1></button>
-        <button style={{ padding: "0 1.5rem" }} onClick={backspace}><h1>←</h1></button>
-        <button style={{ padding: "0 1.5rem" }} onClick={clearDisplay}><h1>Clear</h1></button>
+    <div className={styles.container}>
+      <Head>
+        <title>Phonewords</title>
+        <meta name="description" content="Phonewords" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className={styles.screen}>
+        This is a text
+        <span className={styles.predicted}>
+          {result.map((element, i) => element && <BadgePrimitive key={`pred-${i}`} background="darkBlue" foregroundColor="#fff">{element}</BadgePrimitive>)}
+        </span>
       </div>
-      <textarea readOnly value={display} style={{ width: "50%" }}></textarea>
-      <div style={{ width: "50%" }}>
-        <h3>Results:</h3>
-        {result.map((element, index) => <div key={index}><span>{element}</span><br /></div>)}
-      </div>
+      <Grid
+        rowGap="1rem"
+        columnGap="1rem"
+        columns="repeat(3, 1fr)"
+      >
+        <Button width={"4.5rem"} disabled={true}>1<br /><Text as="span" type="white" italic={true} size="small">_</Text></Button>
+        <Button width={"4.5rem"} onClick={() => writeToDisplay('2')}>2<br /><Text as="span" type="white" italic={true} size="small">ABC</Text></Button>
+        <Button width={"4.5rem"} onClick={() => writeToDisplay('3')}>3<br /><Text as="span" type="white" italic={true} size="small">DEF</Text></Button>
+        <Button width={"4.5rem"} onClick={() => writeToDisplay('4')}>4<br /><Text as="span" type="white" italic={true} size="small">GHI</Text></Button>
+        <Button width={"4.5rem"} onClick={() => writeToDisplay('5')}>5<br /><Text as="span" type="white" italic={true} size="small">JKL</Text></Button>
+        <Button width={"4.5rem"} onClick={() => writeToDisplay('6')}>6<br /><Text as="span" type="white" italic={true} size="small">MNO</Text></Button>
+        <Button width={"4.5rem"} onClick={() => writeToDisplay('7')}>7<br /><Text as="span" type="white" italic={true} size="small">PQRS</Text></Button>
+        <Button width={"4.5rem"} onClick={() => writeToDisplay('8')}>8<br /><Text as="span" type="white" italic={true} size="small">TUV</Text></Button>
+        <Button width={"4.5rem"} onClick={() => writeToDisplay('9')}>9<br /><Text as="span" type="white" italic={true} size="small">WXYZ</Text></Button>
+        <Button width={"4.5rem"} onClick={clearDisplay}>Clear</Button>
+        <Button width={"4.5rem"} disabled={true}>0</Button>
+        <Button width={"4.5rem"} onClick={backspace}><ChevronLeft /></Button>
+      </Grid>
+      <div className={styles.screen}>{display}</div>
     </div>
   )
 }
