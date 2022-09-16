@@ -8,7 +8,6 @@ export const useEmulator = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const updateDisplay = (newDigit: string) => {
-    setIsLoading(true)
     setDigits(digits + newDigit)
   }
 
@@ -34,6 +33,7 @@ export const useEmulator = () => {
 
   useEffect(() => {
     if (digits.length) {
+      setIsLoading(true)
       getWords(digits)
         .then(res => setWords(res.data))
       setIsLoading(false)
