@@ -62,7 +62,7 @@ const Home: NextPage = () => {
           {result.map((element, i) => element && <div key={`pred-${i}`} onClick={() => updateScreen(element)} style={{ cursor: "pointer" }}><BadgePrimitive background="#007F6D" foregroundColor="#fff">{element}</BadgePrimitive></div>)}
         </span>
       </div>
-      <div className={styles.display}>{digits}<span className={styles.blink}>_</span></div>
+      <div className={styles.digitsDisplay}>{digits}<span className={styles.blink}>_</span></div>
       <Grid
         rowGap="1rem"
         columnGap="1rem"
