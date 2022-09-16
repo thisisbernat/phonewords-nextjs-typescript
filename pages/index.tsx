@@ -10,6 +10,7 @@ import ChevronLeft from "@kiwicom/orbit-components/lib/icons/ChevronLeft"
 import BadgePrimitive from "@kiwicom/orbit-components/lib/primitives/BadgePrimitive"
 
 const Home: NextPage = () => {
+  const [message, setMessage] = useState('')
   const [display, setDisplay] = useState('')
   const [result, setResult] = useState([''])
 
@@ -20,10 +21,16 @@ const Home: NextPage = () => {
   const clearDisplay = () => {
     setDisplay('')
     setResult([''])
+    setMessage('')
   }
 
   const backspace = () => {
     setDisplay(display.slice(0, -1))
+  }
+
+  const writeToScreen = (element: string) => {
+    setMessage(message + ' ' + element)
+    setDisplay('')
   }
 
   useEffect(() => {
@@ -45,11 +52,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.screen}>
-        This is a text
+        {message? message : 'Waiting...'}
         <span className={styles.predicted}>
-          {result.map((element, i) => element && <BadgePrimitive key={`pred-${i}`} background="darkBlue" foregroundColor="#fff">{element}</BadgePrimitive>)}
+          {result.map((element, i) => element && <div key={`pred-${i}`} onClick={() => writeToScreen(element)} style={{cursor:"pointer"}}><BadgePrimitive background="#007F6D" foregroundColor="#fff">{element}</BadgePrimitive></div>)}
         </span>
       </div>
+      <div className={styles.display}>{display}</div>
       <Grid
         rowGap="1rem"
         columnGap="1rem"
@@ -67,8 +75,7 @@ const Home: NextPage = () => {
         <Button width={"4.5rem"} onClick={clearDisplay}>Clear</Button>
         <Button width={"4.5rem"} disabled={true}>0</Button>
         <Button width={"4.5rem"} onClick={backspace}><ChevronLeft /></Button>
-      </Grid>
-      <div className={styles.screen}>{display}</div>
+      </Grid>      
     </div>
   )
 }
