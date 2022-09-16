@@ -35,6 +35,12 @@ export const t9 = (digits: string) => {
     walk('', 0)
   }
 
-  return result.filter(word => englishWords.includes(word))
-  
+  const filteredWords = result.filter(word => englishWords.includes(word))
+
+  if (filteredWords.indexOf('kiwi') !== -1) {
+    filteredWords.push('🥝')
+  }
+
+  return filteredWords
+
 }
