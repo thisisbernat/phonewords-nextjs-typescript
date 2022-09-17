@@ -5,6 +5,8 @@ import Head from 'next/head'
 import Keyboard from '../components/Keyboard'
 import Screen from '../components/Screen'
 import DigitsDisplay from '../components/DigitsDisplay'
+import SocialLinks from '../components/SocialLinks'
+
 
 const Home: NextPage = () => {
 
@@ -29,6 +31,7 @@ const Home: NextPage = () => {
       <Screen message={message} isLoading={isLoading} words={words} updateScreen={updateScreen} />
       <DigitsDisplay digits={digits} />
       <Keyboard updateDisplay={updateDisplay} clearData={clearData} backspace={backspace} />
+      <SocialLinks />
     </div>
   )
 }
