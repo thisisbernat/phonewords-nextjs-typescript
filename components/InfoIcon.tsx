@@ -12,7 +12,7 @@ const InfoIcon = () => {
         <Stack>
           <Text>This is a T9 Keyboard Emulator.</Text>
           <List>
-            <Text>Examples</Text>
+            <Text>Examples you can try</Text>
             <ListItem>5494 47 2665</ListItem>
             <ListItem>4473 63</ListItem>
           </List>
