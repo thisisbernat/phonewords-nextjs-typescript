@@ -8,20 +8,6 @@
   gap: 1rem;
 }
 
-.screen {
-  border: grey 1px solid;
-  width: 15.5rem;
-  height: 15.5rem;
-  border-radius: 3px;
-  background-color: #E6F6F4;
-  padding: 0.5rem 1rem;
-  font-family: 'ProggySquareTTSZ';
-  font-size: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .digitsDisplay {
   background-color: darkslategray;
   color: white;
@@ -31,13 +17,6 @@
   width: 15.5rem;
   height: 3rem;
   padding: 0.5rem;
-}
-
-.predictedDisplay {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .blink {
