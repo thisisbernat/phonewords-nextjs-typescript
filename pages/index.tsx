@@ -4,6 +4,7 @@ import { useEmulator } from '../hooks/useEmulator'
 import Head from 'next/head'
 import Keyboard from '../components/keyboard'
 import Screen from '../components/Screen'
+import DigitsDisplay from '../components/DigitsDisplay'
 
 const Home: NextPage = () => {
 
@@ -26,7 +27,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Screen message={message} isLoading={isLoading} words={words} updateScreen={updateScreen} />
-      <div className={styles.digitsDisplay}>{digits}<span className={styles.blink}>_</span></div>
+      <DigitsDisplay digits={digits} />
       <Keyboard updateDisplay={updateDisplay} clearData={clearData} backspace={backspace} />
     </div>
   )

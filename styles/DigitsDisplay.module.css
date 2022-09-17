@@ -1,0 +1,28 @@
+.digitsDisplay {
+  background-color: darkslategray;
+  color: white;
+  font-family: 'ProggySquareTTSZ';
+  font-size: 1.5rem;
+  border-radius: 3px;
+  width: 15.5rem;
+  height: 3rem;
+  padding: 0.5rem;
+}
+
+.blink {
+  animation: 1s linear infinite blink-effect;
+}
+
+@keyframes blink-effect {
+  0% {
+    visibility: hidden;
+  }
+
+  50% {
+    visibility: hidden;
+  }
+
+  100% {
+    visibility: visible;
+  }
+}
