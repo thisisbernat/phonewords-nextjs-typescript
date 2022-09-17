@@ -2,7 +2,7 @@ import styles from '../styles/Home.module.css'
 import type { NextPage } from 'next'
 import { useEmulator } from '../hooks/useEmulator'
 import Head from 'next/head'
-import Keyboard from '../components/keyboard'
+import Keyboard from '../components/Keyboard'
 import Screen from '../components/Screen'
 import DigitsDisplay from '../components/DigitsDisplay'
 
