@@ -1,7 +1,18 @@
 import { useState, useEffect } from 'react'
 import { getWords } from '../services/api.services'
 
-export const useEmulator = () => {
+interface Emulator {
+  message: string
+  digits: string
+  words: string[]
+  isLoading: boolean
+  updateDisplay: (digits: string) => void
+  updateScreen: (newWord: string) => void
+  clearData: () => void
+  backspace: () => void
+}
+
+export const useEmulator = (): Emulator => {
   const [message, setMessage] = useState('')
   const [digits, setDigits] = useState('')
   const [words, setWords] = useState([''])
