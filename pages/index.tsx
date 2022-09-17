@@ -8,6 +8,7 @@ import Text from "@kiwicom/orbit-components/lib/Text"
 import ChevronLeft from "@kiwicom/orbit-components/lib/icons/ChevronLeft"
 import BadgePrimitive from "@kiwicom/orbit-components/lib/primitives/BadgePrimitive"
 import Loading from "@kiwicom/orbit-components/lib/Loading"
+import Heading from "@kiwicom/orbit-components/lib/Heading"
 
 const Home: NextPage = () => {
 
@@ -28,7 +29,7 @@ const Home: NextPage = () => {
         <title>T9 Emulator 🥝</title>
         <meta name="description" content="Phonewords" />
         <link rel="icon" href="/favicon.ico" />
-      </Head>    
+      </Head>
       <div className={styles.screen}>
         {message ? message : <div> </div>}
         <span className={styles.predictedDisplay}>
@@ -54,6 +55,7 @@ const Home: NextPage = () => {
         <Button width={"4.5rem"} disabled={true}>0</Button>
         <Button width={"4.5rem"} onClick={backspace}><ChevronLeft /></Button>
       </Grid>
+      {/* <Heading type="title2">5494 47 2665</Heading>   */}
     </div>
   )
 }
