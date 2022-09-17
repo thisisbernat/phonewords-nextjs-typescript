@@ -10,9 +10,11 @@ const InfoIcon = () => {
     <div className={styles.info}>
       <Tooltip placement="bottom-start" content={
         <Stack>
-          <Text>You can find the CVV in the right corner of your credit card.</Text>
+          <Text>This is a T9 Keyboard Emulator.</Text>
           <List>
-            <ListItem>Additional information</ListItem>
+            <Text>Examples</Text>
+            <ListItem>5494 47 2665</ListItem>
+            <ListItem>4473 63</ListItem>
           </List>
         </Stack>
       }>
