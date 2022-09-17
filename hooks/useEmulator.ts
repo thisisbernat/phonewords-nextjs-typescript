@@ -6,7 +6,7 @@ interface Emulator {
   digits: string
   words: string[]
   isLoading: boolean
-  updateDisplay: (digits: string) => void
+  updateDisplay: (digits: string | void) => void
   updateScreen: (newWord: string) => void
   clearData: () => void
   backspace: () => void
@@ -18,8 +18,10 @@ export const useEmulator = (): Emulator => {
   const [words, setWords] = useState([''])
   const [isLoading, setIsLoading] = useState(false)
 
-  const updateDisplay = (newDigit: string) => {
-    setDigits(digits + newDigit)
+  const updateDisplay = (newDigit: string | void) => {
+    if (newDigit) {
+      setDigits(digits + newDigit)
+    }
   }
 
   const updateScreen = (newWord: string) => {
