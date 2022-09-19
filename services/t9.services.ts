@@ -15,7 +15,7 @@ const map: { [key: string]: string } =
 }
 
 export const t9 = (digits: string) => {
-  console.time('Build results array')
+  // console.time('Build results array')
   if (digits.length === 0) return []
 
   const result: string[] = []
@@ -35,14 +35,14 @@ export const t9 = (digits: string) => {
   if (digits.length > 0) {
     walk('', 0)
   }
-  console.timeEnd('Build results array')
+  // console.timeEnd('Build results array')
 
-  console.time('Filter against dictionary')
-  const set = new Set(englishWords)
-  const filteredWords = result.filter(word => set.has(word))
+  // console.time('Filter against dictionary')
   // 1st idea, much slower
   // const filteredWords = result.filter(word => englishWords.includes(word))
-  console.timeEnd('Filter against dictionary')
+  const set = new Set(englishWords)
+  const filteredWords = result.filter(word => set.has(word))  
+  // console.timeEnd('Filter against dictionary')
 
   if (filteredWords.indexOf('kiwi') !== -1) {
     filteredWords.push('🥝')
