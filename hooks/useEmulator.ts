@@ -53,6 +53,7 @@ export const useEmulator = (): Emulator => {
       setIsLoading(true)
       getWords(digits)
         .then(res => setWords(res.data))
+        .catch(err => console.log(err))
     } else {
       setWords([''])
     }
