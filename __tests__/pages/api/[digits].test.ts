@@ -1,6 +1,6 @@
 import { createMocks, RequestMethod, createRequest, createResponse } from 'node-mocks-http'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import t9 from '../../pages/api/t9/[digits]'
+import t9 from '../../../pages/api/t9/[digits]'
 
 describe('/api/t9/[digits] API Endpoint', () => {
   function mockRequestResponse(method: RequestMethod = 'GET') {
@@ -12,7 +12,7 @@ describe('/api/t9/[digits] API Endpoint', () => {
     return { req, res }
   }
 
-  it('should return a successful response', async () => {
+  it('should return a successful response', () => {
     const { req, res } = mockRequestResponse()
     t9(req, res)
 
@@ -21,7 +21,7 @@ describe('/api/t9/[digits] API Endpoint', () => {
     expect(res.statusMessage).toEqual('OK')
   })
 
-  it('should return a 400 if Digits are missing', async () => {
+  it('should return a 400 if Digits are missing', () => {
     const { req, res } = mockRequestResponse()
     req.query = {}
 
@@ -31,7 +31,7 @@ describe('/api/t9/[digits] API Endpoint', () => {
     expect(res._getJSONData()).toEqual({ err: 'Invalid digits parameter' })
   })
 
-  it('should return a 405 if HTTP method is not GET', async () => {
+  it('should return a 405 if HTTP method is not GET', () => {
     const { req, res } = mockRequestResponse('POST')
 
     t9(req, res)
@@ -42,7 +42,7 @@ describe('/api/t9/[digits] API Endpoint', () => {
     })
   })
 
-  it('should return the word "giraffe"', async () => {
+  it('should return the word "giraffe"', () => {
     const { req, res } = mockRequestResponse()
     req.query = { digits: '4472333' }
 
