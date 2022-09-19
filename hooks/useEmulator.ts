@@ -29,7 +29,7 @@ export const useEmulator = (): Emulator => {
       setMessage(newWord)
     } else {
       setMessage(message + ' ' + newWord)
-    }    
+    }
     setDigits('')
   }
 
@@ -49,15 +49,22 @@ export const useEmulator = (): Emulator => {
   }
 
   useEffect(() => {
-    if (digits.length) {
+    const getData = async (digits: string) => {
       setIsLoading(true)
-      getWords(digits)
-        .then(res => setWords(res.data))
-        .catch(err => console.log(err))
+      try {
+        const res = await getWords(digits)
+        setWords(res.data)
+      } catch (err) {
+        console.log(err)
+      }
+      setIsLoading(false)
+    }
+
+    if (digits.length) {
+      getData(digits)
     } else {
       setWords([''])
     }
-    setIsLoading(false)
   }, [digits])
 
   return {
