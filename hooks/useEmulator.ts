@@ -55,7 +55,7 @@ export const useEmulator = (): Emulator => {
         const res = await getWords(digits)
         setWords(res.data)
       } catch (err) {
-        console.log(err)
+        console.error(err)
       }
       setIsLoading(false)
     }
