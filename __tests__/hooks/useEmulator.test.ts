@@ -13,7 +13,7 @@ describe('/hooks/useEmulator custom hook', () => {
     expect(result.current.digits).toEqual('54948')
   })
 
-  it('should update the screen', () => {
+  it('should update the phone screen', () => {
     const { result } = renderHook(() => useEmulator())
 
     act(() => result.current.updateScreen('typescript'))
