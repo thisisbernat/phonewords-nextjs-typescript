@@ -1,4 +1,4 @@
-## 📱 T9 Keyboard Emulator 🥝
+# 🥝 T9 Keyboard Emulator
 
 A fully functional number to word list converter made with __Next.js__ and __Typescript__.
 
