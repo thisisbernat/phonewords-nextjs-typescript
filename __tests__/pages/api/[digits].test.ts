@@ -2,16 +2,16 @@ import { createMocks, RequestMethod, createRequest, createResponse } from 'node-
 import type { NextApiRequest, NextApiResponse } from 'next'
 import t9 from '../../../pages/api/t9/[digits]'
 
-describe('/api/t9/[digits] API Endpoint', () => {
-  function mockRequestResponse(method: RequestMethod = 'GET') {
-    const { req, res }: { req: NextApiRequest & ReturnType<typeof createRequest>; res: NextApiResponse & ReturnType<typeof createResponse> } = createMocks({ method })
-    req.headers = {
-      'Content-Type': 'application/json'
-    }
-    req.query = { digits: '' }
-    return { req, res }
+function mockRequestResponse(method: RequestMethod = 'GET') {
+  const { req, res }: { req: NextApiRequest & ReturnType<typeof createRequest>; res: NextApiResponse & ReturnType<typeof createResponse> } = createMocks({ method })
+  req.headers = {
+    'Content-Type': 'application/json'
   }
+  req.query = { digits: '' }
+  return { req, res }
+}
 
+describe('/api/t9/[digits] API Endpoint', () => {
   it('should return a successful response', () => {
     const { req, res } = mockRequestResponse()
     t9(req, res)
