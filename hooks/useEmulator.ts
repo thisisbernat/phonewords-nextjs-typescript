@@ -25,7 +25,11 @@ export const useEmulator = (): Emulator => {
   }
 
   const updateScreen = (newWord: string) => {
-    setMessage(message + ' ' + newWord)
+    if (message === '') {
+      setMessage(newWord)
+    } else {
+      setMessage(message + ' ' + newWord)
+    }    
     setDigits('')
   }
 
